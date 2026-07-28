@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Shop 300+ genuine electronics in Kampala — phones & accessories, sound systems, home appliances and home necessities. Pay on delivery.">
+    <title>Shop All Products | Jeb Electronics</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="shop-page">
+
+    <!-- TOP HEADER WITH SEARCH BAR -->
+    <header class="site-header">
+        <div class="header-top">
+            <a href="index.html" class="logo-area">
+                <div class="logo-icon">J</div>
+                <div class="logo-text">JEB<span class="dot">.</span>ELECTRONICS</div>
+            </a>
+            <div class="header-actions-desktop">
+                <a href="index.html" class="header-link">Home</a>
+                <a href="shop.html" class="header-link active">Shop</a>
+                <a href="tel:0756812504" class="header-link"><i class='bx bx-phone-call'></i> Call</a>
+                <a href="https://wa.me/256705402729" class="header-link header-link-wa"><i class='bx bxl-whatsapp'></i> WhatsApp</a>
+            </div>
+        </div>
+        <div class="header-bottom">
+            <div class="search-bar">
+                <i class='bx bx-search'></i>
+                <input type="text" id="shopSearchInput" placeholder="Search 330+ electronics, brands, categories..." aria-label="Search products">
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content main-content-wide">
+
+        <!-- PRICE / STOCK DISCLAIMER -->
+        <div class="price-disclaimer">
+            <i class='bx bxl-whatsapp'></i>
+            <p><strong>Prices vary by brand, colour &amp; condition.</strong> Message us on <a href="https://wa.me/256705402729" target="_blank">WhatsApp</a> with the item name to confirm what's currently in stock before you order.</p>
+        </div>
+
+        <!-- MAIN CATEGORY FILTERS -->
+        <section class="premium-filters">
+            <div class="filter-pills" id="categoryFilters">
+                <button class="pill active" data-filter="all">All Items</button>
+                <button class="pill" data-filter="phones">Phones &amp; Accessories</button>
+                <button class="pill" data-filter="tv">Televisions</button>
+                <button class="pill" data-filter="sound">Sound Systems</button>
+                <button class="pill" data-filter="appliances">Home Appliances</button>
+                <button class="pill" data-filter="necessities">Home Necessities</button>
+            </div>
+
+            <!-- SUBCATEGORY CHIPS: populated by JS based on the selected category -->
+            <div class="filter-pills subfilter-pills" id="subCategoryFilters"></div>
+
+            <div class="results-bar">
+                <span id="resultsCount" class="results-count">Loading products…</span>
+                <select id="sortSelect" class="sort-select" aria-label="Sort products">
+                    <option value="default">Sort: Featured</option>
+                    <option value="price-asc">Price: Low to High</option>
+                    <option value="price-desc">Price: High to Low</option>
+                    <option value="name-asc">Name: A–Z</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- PRODUCT GRID -->
+        <section id="shop-grid" class="product-grid" style="min-height: 50vh;">
+            <!-- Cards load dynamically -->
+        </section>
+    </main>
+
+    <!-- QUICK VIEW POPUP -->
+    <div id="quickview-overlay" class="modal-overlay">
+        <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="qv-title">
+            <button id="qv-close" class="modal-close" aria-label="Close quick view"><i class='bx bx-x'></i></button>
+            <div class="modal-image-wrapper">
+                <img id="qv-image" src="" alt="">
+            </div>
+            <div class="modal-details">
+                <span id="qv-badge" class="brand-tag"></span>
+                <h2 id="qv-title" class="modal-title"></h2>
+                <div id="qv-price" class="modal-price"></div>
+                <p id="qv-desc" class="modal-desc"></p>
+                <div class="price-disclaimer-inline">
+                    <i class='bx bxl-whatsapp'></i>
+                    <span><strong>Prices vary by brand, colour &amp; condition.</strong> Confirm current stock on WhatsApp before ordering.</span>
+                </div>
+                <div class="modal-actions">
+                    <a id="qv-whatsapp-btn" href="#" target="_blank" class="btn-whatsapp-modal"><i class='bx bxl-whatsapp'></i> Order via WhatsApp</a>
+                    <a id="qv-full-link" href="#" class="btn-full-details">Full Details <i class='bx bx-right-arrow-alt'></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BOTTOM MOBILE NAVIGATION -->
+    <nav class="bottom-nav" aria-label="Main navigation">
+        <a href="tel:0756812504" class="nav-item"><i class='bx bx-phone-call'></i><span>CALL</span></a>
+        <a href="index.html" class="nav-item"><i class='bx bx-home-alt-2'></i><span>HOME</span></a>
+        <a href="shop.html" class="nav-item active"><i class='bx bx-grid-alt'></i><span>SHOP</span></a>
+        <a href="https://wa.me/256705402729" class="nav-item nav-whatsapp"><div class="wa-circle"><i class='bx bxl-whatsapp'></i></div><span>WHATSAPP</span></a>
+        <a href="index.html#location" class="nav-item"><i class='bx bx-map'></i><span>LOCATION</span></a>
+    </nav>
+
+    <!-- Footer Section -->
+    <footer class="site-footer-bar">
+      <div>&copy; 2026 Jeb Electronics. All Rights Reserved.</div>
+      <div class="footer-credit">Designed &amp; Developed by <strong>Jahri Web Studios</strong></div>
+    </footer>
+
+    <!-- ENGINE SCRIPTS -->
+    <script src="products.js"></script>
+    <script src="script.js"></script>
+    <script>
+        const grid = document.getElementById('shop-grid');
+        const shopSearchInput = document.getElementById('shopSearchInput');
+        const resultsCount = document.getElementById('resultsCount');
+        const sortSelect = document.getElementById('sortSelect');
+        const subCategoryFiltersEl = document.getElementById('subCategoryFilters');
+
+        const urlParams = new URLSearchParams(window.location.search);
+        let currentCategory = urlParams.get('category') || 'all';
+        let currentSubcategory = 'all';
+        let currentQuery = urlParams.get('q') || '';
+        let currentSort = 'default';
+
+        // Build a lookup of subcategories per main category, in first-seen order
+        function getSubcategoriesFor(category) {
+            if (category === 'all') return [];
+            const seen = new Map();
+            products.forEach(p => {
+                if (p.category === category && !seen.has(p.subcategory)) {
+                    seen.set(p.subcategory, p.subcategoryLabel);
+                }
+            });
+            return Array.from(seen, ([slug, label]) => ({ slug, label }));
+        }
+
+        function renderSubcategoryChips(category) {
+            const subs = getSubcategoriesFor(category);
+            if (subs.length === 0) {
+                subCategoryFiltersEl.innerHTML = '';
+                subCategoryFiltersEl.style.display = 'none';
+                return;
+            }
+            subCategoryFiltersEl.style.display = 'flex';
+            let html = `<button class="pill sub-pill active" data-subfilter="all">All ${subs.length} Subcategories</button>`;
+            subs.forEach(s => {
+                html += `<button class="pill sub-pill" data-subfilter="${s.slug}">${s.label}</button>`;
+            });
+            subCategoryFiltersEl.innerHTML = html;
+
+            subCategoryFiltersEl.querySelectorAll('.sub-pill').forEach(pill => {
+                pill.addEventListener('click', (e) => {
+                    subCategoryFiltersEl.querySelectorAll('.sub-pill').forEach(p => p.classList.remove('active'));
+                    e.currentTarget.classList.add('active');
+                    currentSubcategory = e.currentTarget.getAttribute('data-subfilter');
+                    runFilter();
+                });
+            });
+        }
+
+        function sortProducts(list) {
+            const sorted = [...list];
+            if (currentSort === 'price-asc') sorted.sort((a, b) => a.price - b.price);
+            else if (currentSort === 'price-desc') sorted.sort((a, b) => b.price - a.price);
+            else if (currentSort === 'name-asc') sorted.sort((a, b) => a.name.localeCompare(b.name));
+            return sorted;
+        }
+
+        function displayProducts(list) {
+            grid.innerHTML = '';
+
+            if (list.length === 0) {
+                grid.innerHTML = `
+                    <div class="no-results-message">
+                        <i class='bx bx-search-alt'></i>
+                        No matching products found. Try a different search term or category.
+                    </div>`;
+                resultsCount.textContent = '0 items found';
+                return;
+            }
+
+            resultsCount.textContent = `${list.length} item${list.length === 1 ? '' : 's'} found`;
+
+            list.forEach(item => {
+                const card = document.createElement('article');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <div class="card-image-wrapper" data-id="${item.id}">
+                        <img src="${item.image}" alt="${item.name}" onerror="this.src='images/categories/appliance-placeholder.svg'">
+                        <button class="quick-view-btn" data-id="${item.id}" aria-label="Quick view ${item.name}"><i class='bx bx-show'></i> Quick View</button>
+                    </div>
+                    <div class="card-details">
+                        <span class="brand-tag">${item.subcategoryLabel}</span>
+                        <h3 class="product-title">${item.name}</h3>
+                        <div class="price-row">
+                            <div class="current-price"><span class="amount">${priceDisplay(item)}</span></div>
+                        </div>
+                        <a href="product.html?id=${item.id}" class="btn-order">VIEW DETAILS</a>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+
+            // Wire quick view buttons for this render
+            grid.querySelectorAll('.quick-view-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const id = parseInt(btn.getAttribute('data-id'), 10);
+                    if (window.openQuickView) window.openQuickView(id);
+                });
+            });
+        }
+
+        function runFilter() {
+            let filtered = products;
+
+            if (currentCategory !== 'all') {
+                filtered = filtered.filter(item => item.category === currentCategory);
+            }
+            if (currentSubcategory !== 'all') {
+                filtered = filtered.filter(item => item.subcategory === currentSubcategory);
+            }
+            if (currentQuery.trim() !== '') {
+                const q = currentQuery.toLowerCase();
+                filtered = filtered.filter(item =>
+                    item.name.toLowerCase().includes(q) ||
+                    item.subcategoryLabel.toLowerCase().includes(q) ||
+                    item.categoryLabel.toLowerCase().includes(q)
+                );
+            }
+
+            displayProducts(sortProducts(filtered));
+        }
+
+        // Main category pill clicks
+        document.querySelectorAll('#categoryFilters .pill').forEach(pill => {
+            pill.addEventListener('click', (e) => {
+                document.querySelectorAll('#categoryFilters .pill').forEach(p => p.classList.remove('active'));
+                e.target.classList.add('active');
+
+                currentCategory = e.target.getAttribute('data-filter');
+                currentSubcategory = 'all';
+                shopSearchInput.value = '';
+                currentQuery = '';
+                renderSubcategoryChips(currentCategory);
+                runFilter();
+            });
+        });
+
+        // Search input
+        shopSearchInput.addEventListener('input', (e) => {
+            currentQuery = e.target.value;
+            runFilter();
+        });
+
+        // Sort dropdown
+        sortSelect.addEventListener('change', (e) => {
+            currentSort = e.target.value;
+            runFilter();
+        });
+
+        // Initialize
+        if (currentQuery) {
+            shopSearchInput.value = currentQuery;
+            document.querySelectorAll('#categoryFilters .pill').forEach(p => p.classList.remove('active'));
+            document.querySelector('#categoryFilters .pill[data-filter="all"]').classList.add('active');
+        } else {
+            document.querySelectorAll('#categoryFilters .pill').forEach(p => {
+                p.classList.toggle('active', p.getAttribute('data-filter') === currentCategory);
+            });
+        }
+        renderSubcategoryChips(currentCategory);
+        runFilter();
+    </script>
+</body>
+</html>

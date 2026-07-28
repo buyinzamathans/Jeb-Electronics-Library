@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="bgSnd" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1220"/>
+      <stop offset="100%" stop-color="#1a263e"/>
+    </linearGradient>
+    <linearGradient id="iconSnd" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff7a1a"/>
+      <stop offset="100%" stop-color="#ff9c4d"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#bgSnd)"/>
+  <circle cx="200" cy="175" r="130" fill="#ffffff" opacity="0.04"/>
+
+  <!-- Subwoofer cabinet -->
+  <rect x="140" y="90" width="120" height="120" rx="10" fill="url(#iconSnd)"/>
+  <circle cx="200" cy="150" r="42" fill="#0b1220"/>
+  <circle cx="200" cy="150" r="30" fill="#1a263e"/>
+  <circle cx="200" cy="150" r="10" fill="url(#iconSnd)"/>
+
+  <!-- Slim soundbar beneath -->
+  <rect x="90" y="228" width="220" height="26" rx="13" fill="#ffffff" opacity="0.9"/>
+  <circle cx="112" cy="241" r="4" fill="#ff7a1a"/>
+  <circle cx="128" cy="241" r="4" fill="#ff7a1a"/>
+  <circle cx="144" cy="241" r="4" fill="#ff7a1a"/>
+
+  <!-- Soundwave arcs radiating outward -->
+  <path d="M70 150 a60 60 0 0 0 0 40" stroke="#ffffff" stroke-width="5" fill="none" opacity="0.5" stroke-linecap="round"/>
+  <path d="M50 140 a90 90 0 0 0 0 60" stroke="#ffffff" stroke-width="5" fill="none" opacity="0.3" stroke-linecap="round"/>
+  <path d="M330 150 a60 60 0 0 1 0 40" stroke="#ffffff" stroke-width="5" fill="none" opacity="0.5" stroke-linecap="round"/>
+  <path d="M350 140 a90 90 0 0 1 0 60" stroke="#ffffff" stroke-width="5" fill="none" opacity="0.3" stroke-linecap="round"/>
+
+  <text x="200" y="330" font-family="Arial, sans-serif" font-size="24" font-weight="800" fill="#ffffff" text-anchor="middle" letter-spacing="0.5">SOUND SYSTEMS</text>
+  <text x="200" y="356" font-family="Arial, sans-serif" font-size="13" font-weight="600" fill="#ff9c4d" text-anchor="middle" letter-spacing="1">WOOFERS · SOUNDBARS · PA</text>
+</svg>
