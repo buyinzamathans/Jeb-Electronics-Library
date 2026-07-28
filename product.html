@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details - Jeb Electronics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="shop-page">
+
+  <!-- TOP HEADER -->
+  <header class="site-header">
+    <div class="header-top">
+      <a href="index.html" class="logo-area">
+        <div class="logo-icon">J</div>
+        <div class="logo-text">JEB<span class="dot">.</span>ELECTRONICS</div>
+      </a>
+      <div class="header-actions-desktop">
+        <a href="index.html" class="header-link">Home</a>
+        <a href="shop.html" class="header-link">Shop</a>
+        <a href="tel:0756812504" class="header-link"><i class='bx bx-phone-call'></i> Call</a>
+        <a href="https://wa.me/256705402729" class="header-link header-link-wa"><i class='bx bxl-whatsapp'></i> WhatsApp</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="product-page-main">
+    <a href="shop.html" class="back-link"><i class='bx bx-left-arrow-alt'></i> Back to Shop</a>
+
+    <div id="product-content" class="product-container">
+      <!-- Product Details Will Load Here Dynamically -->
+    </div>
+  </main>
+
+  <section class="related-products-section" id="related-section" style="display:none;">
+    <div class="section-header">
+      <h3>You May Also Like</h3>
+    </div>
+    <div id="related-grid" class="product-grid"></div>
+  </section>
+
+  <!-- QUICK VIEW POPUP (used by the "You May Also Like" cards) -->
+  <div id="quickview-overlay" class="modal-overlay">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="qv-title">
+      <button id="qv-close" class="modal-close" aria-label="Close quick view"><i class='bx bx-x'></i></button>
+      <div class="modal-image-wrapper">
+        <img id="qv-image" src="" alt="">
+      </div>
+      <div class="modal-details">
+        <span id="qv-badge" class="brand-tag"></span>
+        <h2 id="qv-title" class="modal-title"></h2>
+        <div id="qv-price" class="modal-price"></div>
+        <p id="qv-desc" class="modal-desc"></p>
+        <div class="modal-actions">
+          <a id="qv-whatsapp-btn" href="#" target="_blank" class="btn-whatsapp-modal"><i class='bx bxl-whatsapp'></i> Order via WhatsApp</a>
+          <a id="qv-full-link" href="#" class="btn-full-details">Full Details <i class='bx bx-right-arrow-alt'></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTTOM MOBILE NAVIGATION -->
+  <nav class="bottom-nav" aria-label="Main navigation">
+    <a href="tel:0756812504" class="nav-item"><i class='bx bx-phone-call'></i><span>CALL</span></a>
+    <a href="index.html" class="nav-item"><i class='bx bx-home-alt-2'></i><span>HOME</span></a>
+    <a href="shop.html" class="nav-item active"><i class='bx bx-grid-alt'></i><span>SHOP</span></a>
+    <a href="https://wa.me/256705402729" class="nav-item nav-whatsapp"><div class="wa-circle"><i class='bx bxl-whatsapp'></i></div><span>WHATSAPP</span></a>
+    <a href="index.html#location" class="nav-item"><i class='bx bx-map'></i><span>LOCATION</span></a>
+  </nav>
+
+  <!-- Footer Section -->
+  <footer class="site-footer-bar">
+    <div>&copy; 2026 Jeb Electronics. All Rights Reserved.</div>
+    <div class="footer-credit">Designed &amp; Developed by <strong>Jahri Web Studios</strong></div>
+  </footer>
+
+  <!-- Load your inventory database file first -->
+  <script src="products.js"></script>
+  <script src="script.js"></script>
+
+  <!-- Detail page script -->
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = parseInt(urlParams.get('id'), 10);
+
+    const item = products.find(p => p.id === productId);
+    const container = document.getElementById('product-content');
+
+    if (item) {
+      const whatsappPhone = "256705402729";
+      const orderMessage = encodeURIComponent(`Hello Jeb Electronics! I am interested in buying: ${item.name} (${priceDisplay(item)}). Is it currently in stock?`);
+      const whatsappUrl = `https://wa.me/${whatsappPhone}?text=${orderMessage}`;
+
+      container.innerHTML = `
+        <div class="product-image-box">
+          <img src="${item.image}" alt="${item.name}" onerror="this.src='images/categories/appliance-placeholder.svg'">
+        </div>
+        <div class="product-details-box">
+          <span class="brand-tag">${item.subcategoryLabel}</span>
+          <h1>${item.name}</h1>
+          <div class="price-tag">${priceDisplay(item)}</div>
+          <p class="product-description">${item.description}</p>
+          <p class="product-note">
+            *Prices are indicative ranges referenced from the Kampala market and are subject to minor updates. Confirm exact price, colour and availability via WhatsApp before your order is finalised.
+          </p>
+          <a href="${whatsappUrl}" target="_blank" class="btn-whatsapp">
+            <i class='bx bxl-whatsapp'></i> Order via WhatsApp
+          </a>
+        </div>
+      `;
+      document.title = `${item.name} - Jeb Electronics`;
+
+      // Related products: same subcategory first, fall back to same category
+      let related = products.filter(p => p.subcategory === item.subcategory && p.id !== item.id);
+      if (related.length < 4) {
+        const extra = products.filter(p => p.category === item.category && p.id !== item.id && !related.includes(p));
+        related = related.concat(extra);
+      }
+      related = related.slice(0, 8);
+
+      if (related.length > 0) {
+        const relatedSection = document.getElementById('related-section');
+        const relatedGrid = document.getElementById('related-grid');
+        relatedSection.style.display = 'block';
+
+        related.forEach(rp => {
+          const card = document.createElement('article');
+          card.className = 'product-card';
+          card.innerHTML = `
+            <div class="card-image-wrapper" data-id="${rp.id}">
+              <img src="${rp.image}" alt="${rp.name}" onerror="this.src='images/categories/appliance-placeholder.svg'">
+              <button class="quick-view-btn" data-id="${rp.id}" aria-label="Quick view ${rp.name}"><i class='bx bx-show'></i> Quick View</button>
+            </div>
+            <div class="card-details">
+              <span class="brand-tag">${rp.subcategoryLabel}</span>
+              <h3 class="product-title">${rp.name}</h3>
+              <div class="price-row">
+                <div class="current-price"><span class="amount">${priceDisplay(rp)}</span></div>
+              </div>
+              <a href="product.html?id=${rp.id}" class="btn-order">VIEW DETAILS</a>
+            </div>
+          `;
+          relatedGrid.appendChild(card);
+        });
+
+        relatedGrid.querySelectorAll('.quick-view-btn').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const id = parseInt(btn.getAttribute('data-id'), 10);
+            if (window.openQuickView) window.openQuickView(id);
+          });
+        });
+      }
+    } else {
+      container.innerHTML = `
+        <div style="text-align: center; width: 100%; padding: 40px 0;">
+          <h2>Product Not Found</h2>
+          <p style="color: var(--text-muted); margin: 10px 0 20px;">Sorry, the item you are looking for does not exist or has been removed.</p>
+          <a href="shop.html" class="btn-view-all" style="display:inline-flex; padding: 12px 24px;">Return to Catalog</a>
+        </div>
+      `;
+    }
+  </script>
+
+</body>
+</html>

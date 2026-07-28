@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="bgP" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1220"/>
+      <stop offset="100%" stop-color="#1a263e"/>
+    </linearGradient>
+    <linearGradient id="iconP" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff7a1a"/>
+      <stop offset="100%" stop-color="#ff9c4d"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#bgP)"/>
+  <circle cx="200" cy="170" r="120" fill="#ffffff" opacity="0.04"/>
+
+  <!-- phone body -->
+  <rect x="150" y="90" width="100" height="180" rx="16" fill="url(#iconP)"/>
+  <rect x="160" y="108" width="80" height="140" rx="4" fill="#0b1220"/>
+  <circle cx="200" cy="258" r="6" fill="#ffffff" opacity="0.8"/>
+
+  <!-- earbuds accent, bottom left of phone -->
+  <circle cx="128" cy="230" r="14" fill="#ffffff" opacity="0.9"/>
+  <circle cx="120" cy="252" r="9" fill="#ffffff" opacity="0.6"/>
+
+  <!-- charging bolt accent, right of phone -->
+  <path d="M270 150 L256 182 L270 182 L258 214 L282 176 L268 176 Z" fill="#ffffff" opacity="0.9"/>
+
+  <text x="200" y="330" font-family="Arial, sans-serif" font-size="24" font-weight="800" fill="#ffffff" text-anchor="middle" letter-spacing="0.5">PHONES &amp; ACCESSORIES</text>
+  <text x="200" y="356" font-family="Arial, sans-serif" font-size="13" font-weight="600" fill="#ff9c4d" text-anchor="middle" letter-spacing="1">JEB ELECTRONICS</text>
+</svg>
