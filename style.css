@@ -95,6 +95,63 @@ a {
 
 .logo-text .dot { color: var(--orange); }
 
+.logo-stack {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+.logo-stack .logo-text { font-size: 17px; }
+
+.logo-sub {
+    font-family: var(--font-body);
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    color: #94a3b8;
+    margin-top: 2px;
+}
+
+/* --- Cross-promo strip (used on shop/product/library pages) --- */
+.promo-strip { margin: 24px 12px; }
+
+.promo-strip-inner {
+    background: var(--card-bg);
+    border: 1.5px dashed rgba(255, 122, 26, 0.4);
+    border-radius: 12px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.promo-strip-inner > i:first-child {
+    font-size: 24px;
+    color: var(--orange);
+    flex-shrink: 0;
+}
+
+.promo-strip-text {
+    flex: 1 1 180px;
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.45;
+}
+
+.promo-strip-text strong { color: var(--ink); }
+
+.promo-strip-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 12px;
+    color: var(--orange);
+    white-space: nowrap;
+}
+
 .menu-btn {
     background: transparent;
     border: none;
@@ -692,6 +749,121 @@ a {
 
 .btn-view-all:active {
     transform: scale(0.95);
+}
+
+/* --- VIDEO LIBRARY SECTION --- */
+.library-section { padding: 12px; scroll-margin-top: 70px; }
+
+.library-card {
+    position: relative;
+    background: linear-gradient(135deg, #1a0f0a 0%, var(--ink) 55%, #1a263e 100%);
+    border-radius: 16px;
+    padding: 30px 20px 24px;
+    text-align: center;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(11, 18, 32, 0.2);
+}
+
+/* Filmstrip-style sprocket edges, purely decorative (no imagery) */
+.library-card::before,
+.library-card::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 10px;
+    background-image: repeating-linear-gradient(90deg, rgba(255,255,255,0.14) 0 6px, transparent 6px 16px);
+}
+.library-card::before { top: 0; }
+.library-card::after { bottom: 0; }
+
+.library-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 10px;
+    border-radius: 50%;
+    background: rgba(255, 122, 26, 0.14);
+    color: var(--orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.library-tag {
+    display: inline-block;
+    color: var(--orange);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    margin-bottom: 6px;
+}
+
+.library-card h3 {
+    font-family: var(--font-heading);
+    font-size: 19px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+
+.library-card p {
+    font-size: 13px;
+    color: #cbd5e1;
+    line-height: 1.5;
+    max-width: 380px;
+    margin: 0 auto 14px;
+}
+
+.library-location-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: #94a3b8;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 18px;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.library-location-link i { color: var(--orange); font-size: 14px; }
+
+.library-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.library-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 800;
+    padding: 10px 18px;
+    border-radius: 8px;
+    color: #ffffff;
+    transition: transform 0.2s ease;
+}
+
+.library-btn:active { transform: scale(0.96); }
+
+.library-btn-telegram {
+    background: linear-gradient(135deg, #229ED9, #3fb8f0);
+    box-shadow: 0 4px 12px rgba(34, 158, 217, 0.3);
+}
+
+.library-btn-whatsapp {
+    background: linear-gradient(135deg, var(--whatsapp), #1dd1a1);
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+
+.library-btn-primary {
+    background: linear-gradient(135deg, var(--orange), #ff9c4d);
+    box-shadow: 0 4px 12px rgba(255, 122, 26, 0.3);
 }
 
 /* --- FOOTER & BOTTOM NAV --- */
@@ -1332,6 +1504,250 @@ a {
 
 @media (min-width: 1280px) {
     .product-grid { grid-template-columns: repeat(5, 1fr); }
+}
+
+/* ==========================================================================
+   LIBRARY PAGE (dedicated /library.html)
+   ========================================================================== */
+
+.lib-hero-section { padding: 12px; }
+
+.lib-hero-card {
+    position: relative;
+    background: linear-gradient(135deg, #1a0f0a 0%, var(--ink) 55%, #1a263e 100%);
+    color: #ffffff;
+    border-radius: 16px;
+    padding: 34px 22px 28px;
+    text-align: center;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(11, 18, 32, 0.2);
+}
+
+.lib-hero-card::before,
+.lib-hero-card::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 10px;
+    background-image: repeating-linear-gradient(90deg, rgba(255,255,255,0.14) 0 6px, transparent 6px 16px);
+}
+.lib-hero-card::before { top: 0; }
+.lib-hero-card::after { bottom: 0; }
+
+.lib-hero-icon {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 12px;
+    border-radius: 50%;
+    background: rgba(255, 122, 26, 0.14);
+    color: var(--orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+}
+
+.lib-hero-tag {
+    display: inline-block;
+    color: var(--orange);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+}
+
+.lib-hero-card h1 {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 900;
+    line-height: 1.25;
+    margin-bottom: 10px;
+}
+
+.lib-hero-card p {
+    font-size: 13px;
+    color: #cbd5e1;
+    line-height: 1.55;
+    max-width: 420px;
+    margin: 0 auto 20px;
+}
+
+.lib-hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* --- Section shell reused across the library page --- */
+.lib-section { padding: 26px 12px 6px; }
+
+.lib-section-header { text-align: center; margin-bottom: 16px; }
+
+.lib-section-header .lib-eyebrow {
+    display: block;
+    color: var(--orange);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    margin-bottom: 6px;
+}
+
+.lib-section-header h2 {
+    font-family: var(--font-heading);
+    font-size: 19px;
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 6px;
+}
+
+.lib-section-header p {
+    font-size: 13px;
+    color: var(--text-muted);
+    max-width: 440px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+/* --- Genre / "what you'll find" cards --- */
+.genre-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.genre-card {
+    background: var(--card-bg);
+    border-radius: 14px;
+    padding: 18px 14px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+
+.genre-card:active { transform: scale(0.97); }
+
+.genre-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: rgba(255, 122, 26, 0.1);
+    color: var(--orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+}
+
+.genre-card h4 {
+    font-family: var(--font-heading);
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--ink);
+}
+
+.genre-card span {
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+.genre-ask {
+    margin-top: 2px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--whatsapp);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* --- How it works steps --- */
+.steps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 440px;
+    margin: 0 auto;
+}
+
+.step-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 14px 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.step-number {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--orange);
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.step-card h4 {
+    font-family: var(--font-heading);
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 3px;
+}
+
+.step-card p {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* --- Bottom CTA band --- */
+.lib-cta-band {
+    margin: 30px 12px 20px;
+    background: linear-gradient(135deg, var(--ink) 0%, #1a263e 100%);
+    border-radius: 16px;
+    padding: 26px 20px;
+    text-align: center;
+    color: #fff;
+}
+
+.lib-cta-band h3 {
+    font-family: var(--font-heading);
+    font-size: 17px;
+    font-weight: 800;
+    margin-bottom: 6px;
+}
+
+.lib-cta-band p {
+    font-size: 12px;
+    color: #cbd5e1;
+    margin-bottom: 16px;
+}
+
+@media (min-width: 700px) {
+    .genre-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (min-width: 1024px) {
+    .lib-hero-card { padding: 52px 40px; }
+    .lib-hero-card h1 { font-size: 34px; }
+    .lib-hero-card p { font-size: 15px; max-width: 560px; }
+    .genre-grid { grid-template-columns: repeat(4, 1fr); }
+    .steps-list { max-width: 600px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Product Details - Jeb Electronics</title>
+  <title>Product Details - Jeb Electronics Library</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -17,11 +17,15 @@
     <div class="header-top">
       <a href="index.html" class="logo-area">
         <div class="logo-icon">J</div>
-        <div class="logo-text">JEB<span class="dot">.</span>ELECTRONICS</div>
+        <div class="logo-stack">
+            <div class="logo-text">JEB<span class="dot">.</span></div>
+            <div class="logo-sub">ELECTRONICS &middot; LIBRARY</div>
+        </div>
       </a>
       <div class="header-actions-desktop">
         <a href="index.html" class="header-link">Home</a>
         <a href="shop.html" class="header-link">Shop</a>
+        <a href="library.html" class="header-link">Library</a>
         <a href="tel:0756812504" class="header-link"><i class='bx bx-phone-call'></i> Call</a>
         <a href="https://wa.me/256705402729" class="header-link header-link-wa"><i class='bx bxl-whatsapp'></i> WhatsApp</a>
       </div>
@@ -41,6 +45,15 @@
       <h3>You May Also Like</h3>
     </div>
     <div id="related-grid" class="product-grid"></div>
+  </section>
+
+  <!-- CROSS-PROMO: VIDEO LIBRARY -->
+  <section class="promo-strip">
+    <div class="promo-strip-inner">
+      <i class='bx bx-movie-play'></i>
+      <div class="promo-strip-text"><strong>Also at Jeb:</strong> our Video Library — Luganda-translated movies, series &amp; more at Kalerwe Freedom Market.</div>
+      <a href="library.html" class="promo-strip-btn">Explore <i class='bx bx-right-arrow-alt'></i></a>
+    </div>
   </section>
 
   <!-- QUICK VIEW POPUP (used by the "You May Also Like" cards) -->
@@ -76,12 +89,12 @@
     <a href="index.html" class="nav-item"><i class='bx bx-home-alt-2'></i><span>HOME</span></a>
     <a href="shop.html" class="nav-item active"><i class='bx bx-grid-alt'></i><span>SHOP</span></a>
     <a href="https://wa.me/256705402729" class="nav-item nav-whatsapp"><div class="wa-circle"><i class='bx bxl-whatsapp'></i></div><span>WHATSAPP</span></a>
-    <a href="index.html#location" class="nav-item"><i class='bx bx-map'></i><span>LOCATION</span></a>
+    <a href="library.html" class="nav-item"><i class='bx bx-movie-play'></i><span>LIBRARY</span></a>
   </nav>
 
   <!-- Footer Section -->
   <footer class="site-footer-bar">
-    <div>&copy; 2026 Jeb Electronics. All Rights Reserved.</div>
+    <div>&copy; 2026 Jeb Electronics Library. All Rights Reserved.</div>
     <div class="footer-credit">Designed &amp; Developed by <strong>Jahri Web Studios</strong></div>
   </footer>
 
@@ -133,7 +146,7 @@
           </a>
         </div>
       `;
-      document.title = `${item.name} - Jeb Electronics`;
+      document.title = `${item.name} - Jeb Electronics Library`;
 
       if (gallery.length > 1) {
         const mainImg = document.getElementById('main-product-image');
