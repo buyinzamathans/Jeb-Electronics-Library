@@ -115,6 +115,23 @@
       const orderMessage = encodeURIComponent(`Hello Jeb Electronics! I am interested in buying: ${item.name} (${priceDisplay(item)}). Is it currently in stock?`);
       const whatsappUrl = `https://wa.me/${whatsappPhone}?text=${orderMessage}`;
 
+      // Contextual Video Library cross-sell, tailored by category
+      const libraryPromoCopy = {
+        tv: "Got the screen — now get something to watch. Our Video Library has Luganda-translated movies &amp; series, right here at Jeb.",
+        sound: "Perfect for movie night. Pair it with something from our Video Library — Luganda-translated films &amp; series.",
+        phones: "Also at Jeb: a Video Library of Luganda-translated movies &amp; series at Kalerwe Freedom Market.",
+        appliances: "Also at Jeb: our Video Library — Luganda-translated movies &amp; series at Kalerwe Freedom Market.",
+        necessities: "Also at Jeb: our Video Library — Luganda-translated movies &amp; series at Kalerwe Freedom Market."
+      };
+      const libraryPromoText = libraryPromoCopy[item.category] || libraryPromoCopy.phones;
+      const libraryPromoHtml = `
+        <a href="library.html" class="promo-strip-inner" style="text-decoration:none; margin-top: 12px; margin-bottom: 4px;">
+          <i class='bx bx-movie-play'></i>
+          <div class="promo-strip-text">${libraryPromoText}</div>
+          <span class="promo-strip-btn">Explore <i class='bx bx-right-arrow-alt'></i></span>
+        </a>
+      `;
+
       const gallery = (item.images && item.images.length > 0) ? item.images : [item.image];
       const thumbsHtml = gallery.length > 1
         ? `<div class="gallery-thumbs" id="gallery-thumbs">
@@ -137,6 +154,7 @@
           <h1>${item.name}</h1>
           <div class="price-tag">${priceDisplay(item)}</div>
           <p class="product-description">${item.description}</p>
+          ${libraryPromoHtml}
           <div class="price-disclaimer-inline">
             <i class='bx bxl-whatsapp'></i>
             <span><strong>Prices vary by brand, colour &amp; condition.</strong> Message us the item name on WhatsApp to confirm current stock before ordering.</span>

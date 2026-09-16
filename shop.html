@@ -58,6 +58,7 @@
                 <button class="pill" data-filter="sound">Sound Systems</button>
                 <button class="pill" data-filter="appliances">Home Appliances</button>
                 <button class="pill" data-filter="necessities">Home Necessities</button>
+                <a href="library.html" class="pill pill-library"><i class='bx bx-movie-play'></i> Video Library</a>
             </div>
 
             <!-- SUBCATEGORY CHIPS: populated by JS based on the selected category -->
@@ -258,9 +259,9 @@
         }
 
         // Main category pill clicks
-        document.querySelectorAll('#categoryFilters .pill').forEach(pill => {
+        document.querySelectorAll('#categoryFilters .pill[data-filter]').forEach(pill => {
             pill.addEventListener('click', (e) => {
-                document.querySelectorAll('#categoryFilters .pill').forEach(p => p.classList.remove('active'));
+                document.querySelectorAll('#categoryFilters .pill[data-filter]').forEach(p => p.classList.remove('active'));
                 e.target.classList.add('active');
 
                 currentCategory = e.target.getAttribute('data-filter');
@@ -287,7 +288,7 @@
         // Initialize
         if (currentQuery) {
             shopSearchInput.value = currentQuery;
-            document.querySelectorAll('#categoryFilters .pill').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('#categoryFilters .pill[data-filter]').forEach(p => p.classList.remove('active'));
             document.querySelector('#categoryFilters .pill[data-filter="all"]').classList.add('active');
         } else {
             document.querySelectorAll('#categoryFilters .pill').forEach(p => {
